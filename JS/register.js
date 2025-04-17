@@ -6,12 +6,11 @@ document.querySelector("button").addEventListener("click", async () => {
   const pergunta = document.querySelector("#pergunta").value;
   const profileImage = document.querySelector("#profileImage").files[0];
 
-  // Primeiro fazemos o upload da imagem (se existir)
-  let imagemPerfilUrl = ""; // URL padrão vazia ou uma imagem padrão
+
+  let imagemPerfilUrl = ""; 
   
   if (profileImage) {
     try {
-      // Substitua esta função pelo seu serviço de upload real
       imagemPerfilUrl = await uploadImage(profileImage); 
     } catch (error) {
       console.error("Erro ao fazer upload da imagem:", error);
@@ -20,7 +19,6 @@ document.querySelector("button").addEventListener("click", async () => {
     }
   }
 
-  // Depois enviamos os dados para sua API
   try {
     const resposta = await fetch("https://back-spider.vercel.app/user/cadastrarUser", {
       method: "POST",
@@ -30,7 +28,7 @@ document.querySelector("button").addEventListener("click", async () => {
         email, 
         senha, 
         premium,
-        imagemPerfil: imagemPerfilUrl, // Usamos a URL obtida
+        imagemPerfil: imagemPerfilUrl, 
         senhaRecuperacao: pergunta 
       })
     });
@@ -39,7 +37,7 @@ document.querySelector("button").addEventListener("click", async () => {
     
     if (resposta.ok) {
       alert("Cadastro realizado com sucesso!");
-      window.location.href = "index.html";
+      window.location.href = "login.html";
     } else {
       alert(dados.mensagem || "Erro ao cadastrar.");
     }
@@ -49,9 +47,7 @@ document.querySelector("button").addEventListener("click", async () => {
   }
 });
 
-// Função exemplo para upload de imagem (substitua pelo seu serviço real)
 async function uploadImage(imageFile) {
-  // Exemplo usando ImgBB (você precisará de uma API key)
   const formData = new FormData();
   formData.append('image', imageFile);
   
@@ -66,5 +62,5 @@ async function uploadImage(imageFile) {
     throw new Error(data.error.message || "Falha no upload da imagem");
   }
   
-  return data.data.url; // Retorna a URL da imagem
+  return data.data.url; 
 }

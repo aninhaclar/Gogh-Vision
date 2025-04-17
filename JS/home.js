@@ -1,18 +1,29 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    const token = localStorage.getItem("token");
-    try {
-      const resposta = await fetch("https://back-spider.vercel.app/publicacoes/listarPublicacoes", {
-        headers: { Authorization: `Bearer ${token}` }
+  const token = localStorage.getItem("token");
+  try {
+    const resposta = await fetch("https://back-spider.vercel.app/publicacoes/listarPublicacoes", {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+
+    const dados = await resposta.json();
+
+    const feed = document.querySelector(".feed");
+    feed.innerHTML = "<h2>Feed</h2>" + dados.map(post => `
+      <div class="post">
+        <p><strong>${post.usuario}:</strong> ${post.mensagem}</p>
+        <button class="like-btn">💜</button>
+      </div>
+    `).join("");
+
+    // Adiciona o evento de curtir
+    const botoesCurtir = document.querySelectorAll(".like-btn");
+    botoesCurtir.forEach(botao => {
+      botao.addEventListener("click", () => {
+        botao.classList.toggle("curtido");
       });
-      const dados = await resposta.json();
-  
-      const feed = document.querySelector(".feed");
-      feed.innerHTML = "<h2>Feed</h2>" + dados.map(post => `
-        <div class="post">
-          <p><strong>${post.usuario}:</strong> ${post.mensagem}</p>
-        </div>
-      `).join("");
-    } catch {
-      alert("Erro ao carregar o feed.");
-    }
-  });
+    });
+
+  } catch {
+    alert("Erro ao carregar o feed.");
+  }
+});

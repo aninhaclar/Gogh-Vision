@@ -13,7 +13,7 @@ document.querySelector("button").addEventListener("click", async () => {
       const dados = await resposta.json();
       if (resposta.ok) {
         alert("Senha redefinida com sucesso!");
-        window.location.href = "index.html";
+        window.location.href = "login.html";
       } else {
         alert(dados.mensagem || "Erro ao redefinir senha.");
       }
