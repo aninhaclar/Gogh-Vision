@@ -3,7 +3,7 @@ document.querySelector("button").addEventListener("click", async () => {
     const senha = document.querySelector("input[type='password']").value;
   
     try {
-      const resposta = await fetch("https://suaapi.com/login", {
+      const resposta = await fetch("https://back-spider.vercel.app/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, senha })

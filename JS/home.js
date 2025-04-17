@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
     const token = localStorage.getItem("token");
     try {
-      const resposta = await fetch("https://suaapi.com/feed", {
+      const resposta = await fetch("https://back-spider.vercel.app/publicacoes/listarPublicacoes", {
         headers: { Authorization: `Bearer ${token}` }
       });
       const dados = await resposta.json();

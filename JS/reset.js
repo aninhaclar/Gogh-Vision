@@ -4,7 +4,7 @@ document.querySelector("button").addEventListener("click", async () => {
     const novaSenha = document.querySelector("input[type='password']").value;
   
     try {
-      const resposta = await fetch("https://suaapi.com/redefinir-senha", {
+      const resposta = await fetch("https://back-spider.vercel.app/user/RememberPassword", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, pergunta, novaSenha })
