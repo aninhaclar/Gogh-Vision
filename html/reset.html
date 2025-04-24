@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../CSS/reset.css">
   <title>Redefinir Senha</title>
+ 
 </head>
 <body class="auth-page">
   <div class="logo">
@@ -14,9 +15,42 @@
     <h2>Redefinir Senha</h2>
     <input type="email" placeholder="Email">
     <input type="text" placeholder="WordKey">
-    <button>Redefinir</button>
+    <button onclick="abrirModal()">Redefinir</button>
     <p><a href="login.html">Voltar</a></p>
-    <script src="../JS/reset.js"></script>
   </div>
+
+  <!-- Modal -->
+  <div id="modalSenha" class="modal">
+    <div class="modal-conteudo">
+      <span class="fechar" onclick="fecharModal()">&times;</span>
+      <h3>Digite sua nova senha</h3>
+      <input type="password" id="novaSenha" placeholder="Nova senha">
+      <input type="password" id="confirmarSenha" placeholder="Confirmar senha">
+      <button onclick="confirmarNovaSenha()">Confirmar</button>
+    </div>
+  </div>
+
+  <script>
+    function abrirModal() {
+      document.getElementById('modalSenha').style.display = 'block';
+    }
+
+    function fecharModal() {
+      document.getElementById('modalSenha').style.display = 'none';
+    }
+
+    function confirmarNovaSenha() {
+      let senha = document.getElementById('novaSenha').value;
+      let confirmar = document.getElementById('confirmarSenha').value;
+
+      if (senha === confirmar && senha !== '') {
+        alert('Senha redefinida com sucesso!');
+        fecharModal();
+      } else {
+        alert('As senhas não coincidem ou estão vazias.');
+      }
+    }
+  </script>
+  <script src="../JS/reset.js"></script>
 </body>
 </html>

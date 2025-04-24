@@ -1,29 +1,29 @@
-document.addEventListener("DOMContentLoaded", async () => {
-  const token = localStorage.getItem("token");
-  try {
-    const resposta = await fetch("https://back-spider.vercel.app/publicacoes/listarPublicacoes", {
-      headers: { Authorization: `Bearer ${token}` }
-    });
+JS
 
-    const dados = await resposta.json();
+'use strict'
 
-    const feed = document.querySelector(".feed");
-    feed.innerHTML = "<h2>Feed</h2>" + dados.map(post => `
-      <div class="post">
-        <p><strong>${post.usuario}:</strong> ${post.mensagem}</p>
-        <button class="like-btn">💜</button>
-      </div>
-    `).join("");
+const galeria = document.getElementById('galeria')
 
-    // Adiciona o evento de curtir
-    const botoesCurtir = document.querySelectorAll(".like-btn");
-    botoesCurtir.forEach(botao => {
-      botao.addEventListener("click", () => {
-        botao.classList.toggle("curtido");
-      });
-    });
+async function pesquisarFotos(){
+    const url = 'https://back-spider.vercel.app/storys/listarStorys' // url da api 
 
-  } catch {
-    alert("Erro ao carregar o feed.");
-  }
-});
+    const response  = await fetch(url) // fetch -> faz requisições web (conversa com o back)
+    const data      = await response.json() // chamar apenas o json
+    return data
+}
+
+// Função para criar as imgs dentro da DIV 
+function criarImagem(link){ // Recebe o link da imagem 
+    const novaImg = document.createElement('img') // criando nova imagem 
+    novaImg.src = link.imagem// Cria a nova image, com a link da foto do API 
+
+    galeria.appendChild(novaImg)
+}
+
+async function preencherFotos(){
+    const fotos = await pesquisarFotos()
+
+    fotos.forEach (criarImagem)
+}
+
+preencherFotos()
