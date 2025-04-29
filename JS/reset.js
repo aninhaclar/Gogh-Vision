@@ -1,59 +1,107 @@
-document.querySelector("button").addEventListener("click", async () => {
-  const email = document.querySelector("input[type='email']").value;
-  const pergunta = document.querySelector("input[type='text']").value;
+'use strict'
 
-  if (!email || !pergunta) {
-    alert("Preencha todos os campos.");
-    return;
-  }
+const botaoRecuperar = document.querySelector("button")  //Busca pelo botão
+const modal = document.querySelector("dialog") //Busca pelo dialog e adiciona ele na variável
+const botaoModificar = document.querySelector("dialog button") //Busca pelo botão que está dentro do dialog
 
-  try {
-    const resposta = await fetch("https://back-spider.vercel.app/user/VerificaWordKey", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, pergunta })
-    });
+const recuperarSenha = async () => {
+    let email = document.getElementById('email').value
+    let palavra = document.getElementById('palavraChave').value
+    let url = "https://back-spider.vercel.app/user/RememberPassword"
 
-    const dados = await resposta.json();
+    if( email            == '' || email            == null || email            == undefined || 
+        palavra          == '' || palavra          == null || palavra          == undefined 
+    )
+    {
+        alert('Dados não preenchidos corretamente!') //até aqui está ok
 
-    if (resposta.ok) {
-      // Se usuário e wordkey estão corretos, abre o modal
-      document.getElementById("modalSenha").style.display = "block";
-    } else {
-      alert(dados.mensagem || "Usuário ou wordkey incorretos.");
+    }else{
+        let data = {
+            email: email,
+            wordKey: palavra
+        }
+
+        console.log(data);
+        
+    
+        let options = {
+            method: 'Post',
+            headers:{
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }
+    
+        const response = await fetch(url, options)
+
+
+        const responseData = await response.json();
+        
+        localStorage.setItem('idUser', responseData.id)
+        
+        if(response.ok){
+            botaoRecuperar.onclick = function(){
+                modal.showModal()
+            } 
+        }else{    
+            alert('Dados inválidos')
+        } 
     }
-  } catch (erro) {
-    alert("Erro na conexão com a API.");
-  }
-});
-
-async function confirmarNovaSenha() {
-  const email = document.querySelector("input[type='email']").value;
-  const pergunta = document.querySelector("input[type='text']").value;
-  const novaSenha = document.getElementById("novaSenha").value;
-  const confirmar = document.getElementById("confirmarSenha").value;
-
-  if (!novaSenha || novaSenha !== confirmar) {
-    alert("As senhas não coincidem ou estão vazias.");
-    return;
-  }
-
-  try {
-    const resposta = await fetch("https://back-spider.vercel.app/user/RememberPassword", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, pergunta, novaSenha })
-    });
-
-    const dados = await resposta.json();
-
-    if (resposta.ok) {
-      alert("Senha redefinida com sucesso!");
-      window.location.href = "login.html";
-    } else {
-      alert(dados.mensagem || "Erro ao redefinir senha.");
-    }
-  } catch (erro) {
-    alert("Erro na conexão com a API.");
-  }
 }
+
+const modificarSenha = async function(id) {
+    let novaSenha = document.getElementById('senha').value
+    let confirmarSenha = document.getElementById('confirmar').value
+    let url = `https://back-spider.vercel.app/user/newPassword/${id}`
+
+    if(
+        novaSenha      == '' || novaSenha      == null || novaSenha      == undefined ||
+        confirmarSenha == '' || confirmarSenha == null || confirmarSenha == undefined
+    ){
+        alert('Dados não preenchidos corretamente!')
+    }else{
+   
+        let data = {
+            senha: novaSenha
+        }
+        let options = {
+            method: 'PUT',
+            headers:{
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }
+        const response = await fetch(url, options)
+
+        console.log( await response);
+
+        if(response.ok){
+            alert("Senha Alterada com Sucesso !")
+            return true
+        }else{
+            alert('Não foi possível modificar a senha')
+        }
+    }
+}
+
+
+botaoModificar.onclick = async function(){
+
+    let idUser = localStorage.getItem("idUser")
+
+    const validaPassword = await modificarSenha(idUser)
+    
+    if (validaPassword){
+        modal.close()   
+        window.location.href = "../../index.html"
+    }
+
+
+
+}
+
+
+document.getElementById('recuperar').addEventListener('click', recuperarSenha)
+
+
+

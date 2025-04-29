@@ -1,31 +1,66 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../CSS/register.css">
-  <title>Cadastro</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/register.css">
+    <script src="../JS/register.js" defer></script>
+    <title>GOGH VISION</title>
 </head>
-<body class="auth-page">
-  <div class="logo">
-    <img src="../imgs/logo.png" alt="Logo">
-  </div>
-  <div class="auth-box">
-    <h2>Cadastre-se</h2>
-    <input type="text" id="nome" placeholder="Nome">
-<input type="email" id="email" placeholder="Email">
-<input type="password" id="senha" placeholder="Senha">
-<input type="text" id="premium" placeholder="Premium">
-<div class="profile-picture-upload">
-  <label for="profileImage">Imagem de Perfil:</label>
-  <input type="file" id="profileImage" name="profileImage" accept="image/*">
-</div>
-<input type="text" id="pergunta" placeholder="Senha de recuperação">
-<button id="btnCadastrar">Cadastrar</button>
-
-    <p>Já tem conta? <a href="login.html">Entrar</a></p>
-  </div>
-  <button></button>
-  <script src="../JS/register.js"></script>
+<body>
+    <img id="fundo" src="../imgs/Login1.jpg" alt="Fundo de estrelas">
+    <header>
+        <div class="logo">
+            <img src="../imgs/logo.png" alt="Desenho de galáxia">
+            <div class="nome">
+                <h1>GOGH VISION</h1>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="card">
+            <h2>Cadastro</h2>
+            <div class="div-input">
+                <img id="iconPessoa" src="../imgs/pessoa.png" alt="pessoa">
+                <input id="user" type="text" placeholder="Username">
+            </div>
+            <div class="div-input">
+                <img id="iconEmail" src="../imgs/img email.png" alt="email">
+                <input id="email" type="text" placeholder="Email">
+            </div>
+            <div class="div-input">
+                <img id="iconCadeado" src="../imgs/cadeado.png" alt="cadeado">
+                <input id="senha1" type="password" placeholder="Senha">
+                <img onclick="changeVisiblePassword()" id="senhaEscondida" src="https://cdn-icons-png.flaticon.com/512/9726/9726597.png" alt="Mostrar/Ocultar Senha">
+            </div>
+            <div class="div-input">
+                <img id="iconCadeado" src="../imgs/cadeado.png" alt="cadeado">
+                <input id="senha2" type="password" placeholder="Confirmar senha">
+                <img onclick="changeVisibleConfirmPassword()" id="senhaEscondida1" src="https://cdn-icons-png.flaticon.com/512/9726/9726597.png" alt="Mostrar/Ocultar Senha">
+            </div>
+            <div class="div-input">
+                <img id="iconChave" src="../imgs/chave.png" alt="chave">
+                <input id="palavra" type="text" placeholder="Palavra chave para recuperação de senha">
+            </div>
+            <div class="div-input">
+                <img id="iconImagem" src="../imgs/Wallpaper.png" alt="wallpaper">
+                <input id="imagem" type="text" placeholder="URL da imagem">
+            </div>
+            <div class="div-input-check">
+                <input type="checkbox" name="box" id="inputCheck">
+                <p>Deseja se tornar premium?</p>
+            </div>
+        </div>
+        <div class="botoes">
+            <a href="../HTML/login.html">
+                <button id="voltar" >Voltar ao login</button>
+            </a>
+            <a href="../HTML/register.html">
+                <button id="cadastrar">Cadastrar</button>
+            </a>
+            
+        </div>
+    </main>
 </body>
 </html>

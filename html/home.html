@@ -1,42 +1,37 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../CSS/home.css">
-  <title>Home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/home.css">
+    <script src="../JS/home.js" defer></script>
+    <title>Gogh Vision</title>
 </head>
 <body>
-  <header>
-    <img src="../imgs/logo.png" alt="Logo">
-    <nav>
-      <a href="home.html">Início</a>
-      <a href="profile.html">Perfil</a>
-      <a href="friends.html">Amigos</a>
-      <a href="login.html">Sair</a>
-    </nav>
-  </header>
-  <main>
-    <section class="feed">
-      <h2>Feed</h2>
-      <div class="post">
-       <button class="like-btn" onclick="toggleLike(this)">
-          <i class="like-icon"></i> Curtir
-        </button>
-        <p><strong>Usuário1:</strong> Olá, mundo!</p> 
+    <div class="sidebar">
+        <img src="../imgs/casa.png" alt="menu">
+        <img src="../imgs/lupa.png" alt="pesquisar">
+        <img src="../imgs/mais.png" alt="novo post">
+        <img src="../imgs/perfil.png" alt="pessoa">
+    </div>
 
-      </div>
-      <script src="../JS/home.js"></script>
-    </section>
-  </main>
-<div id="modalComentario" class="modal">
-  <div class="modal-conteudo">
-    <span class="fechar" id="fecharModalComentario">&times;</span>
-    <h3>Comentar Publicação</h3>
-    <textarea id="comentarioTexto" placeholder="Digite seu comentário..."></textarea>
-    <button id="enviarComentario">Enviar</button>
-  </div>
-</div>
+    <div class="content">
+        <header>
+            <div class="galeria" id="galeria"></div>
+        </header>
+        <main>
+            <div class="fotos" id="fotos"></div>
+        </main>
+    </div>
 
+   
+    <div id="modal" class="modal" style="display: none;">
+        <div id="modal-content" class="modal-content">
+  
+        </div>
+    </div>
 </body>
 </html>

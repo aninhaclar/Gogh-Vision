@@ -1,117 +1,182 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f0f2f5;
+    background-color: black;
+    background-image: url('../imgs/Login.jpg');
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    font-family: 'Inria Sans', sans-serif;
 }
 
+/* Sidebar */
+.sidebar {
+    width: 10vh;
+    height: 100vh;
+    background-color: #424242;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    padding-top: 5vh;
+    gap: 5vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 100;
+}
+.sidebar img {
+    width: 6vh;
+    height: 6vh;
+    cursor: pointer;
+}
+
+/* Conteúdo principal com margem para a sidebar */
+.content {
+    margin-left: 10vh;
+    width: calc(100vw - 10vh);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
 header {
-  background-color: #0047ab;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
+    height: 3vh;
 }
 
-header img {
-  width: 40px;
+.galeria {
+    padding: 3vh 10vh;
+    display: flex;
+    gap: 5vh;
 }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 10px;
+.galeria img {
+    width: 10vh;
+    height: 15vh;
 }
 
-main {
-  padding: 20px;
+/* Main */
+.fotos {
+    display: flex;
+    flex-direction: column;
+    gap: 7vh;
+    padding: 25vh 10vh;
 }
 
-.feed {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.post {
-  border-bottom: 1px solid #ddd;
-  padding: 10px 0;
-}
-
-.like-btn {
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-  margin-right: 10px;
-  color: #999; /* cor padrão */
-  filter: grayscale(100%); /* preto e branco */
-}
-
-.like-btn.curtido {
-  color: rgb(255, 0, 221); /* cor quando curte */
-  filter: none;
+.card {
+    height: 55vh;
+    width: 130vh;
+    display: flex;
+    flex-direction: row;
+    background-color: #DCDCDC;
+    padding: 2vh 1vh;
+    border-radius: 15px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 
-/* Comentário Button */
-.comentar-btn {
-  background: none;
-  border: none;
-  font-size: 16px;
-  color: #555;
-  cursor: pointer;
+.divPublicacao {
+    height: 20vh;
+    width: 90vh;
+    display: flex;
+    flex-direction: row;
+    gap: 4vh;
+    padding: 0vh 2vh;
 }
 
-/* Modal Comentário */
+.divPublicacao img {
+    height: 50vh;
+    width: 60vh;
+}
+
+.divTextos {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+.divTextos h3 {
+    color: #000000;
+}
+
+.divTextos p {
+    color: #000000;
+    font-size: 4vh;
+}
+
+/* Botões de curtir e comentar */
+.botoes {
+    display: flex;
+    gap: 3vh;
+    margin-top: 2vh;
+}
+
+.botao {
+    background-color: #424242;
+    color: white;
+    padding: 1vh 2vh;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 2vh;
+    transition: background-color 0.3s;
+}
+
+.botao:hover {
+    background-color: #333;
+}
+
+/* Modal de comentário */
 .modal {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0,0,0,0.7);
+    display: none; /* Inicialmente escondido */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
 }
 
-.modal-conteudo {
-  background-color: #fff;
-  margin: 10% auto;
-  padding: 20px;
-  width: 300px;
-  border-radius: 10px;
-  position: relative;
+.modal .modal-content {
+    background-color: white;
+    padding: 2vh;
+    border-radius: 10px;
+    width: 50vw;
 }
 
 .modal textarea {
-  width: 100%;
-  height: 80px;
-  padding: 10px;
-  margin-top: 10px;
-  resize: none;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+    width: 100%;
+    height: 10vh;
+    border-radius: 5px;
+    padding: 1vh;
 }
 
-.modal button {
-  margin-top: 10px;
-  padding: 10px;
-  width: 100%;
-  background-color: rgb(0, 0, 0);
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+.modal .fechar {
+    background-color: #424242;
+    color: white;
+    padding: 1vh 2vh;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 2vh;
 }
 
-.fechar {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 20px;
-  cursor: pointer;
+.modal .fechar:hover {
+    background-color: #333;
 }

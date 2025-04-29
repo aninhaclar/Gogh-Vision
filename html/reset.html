@@ -1,56 +1,54 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../CSS/reset.css">
-  <title>Redefinir Senha</title>
- 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/recureperacaoSenha.css">
+    <script src="../../js/recuperacaoSenha.js" defer></script>
+    <title>Galaxy Art</title>
 </head>
-<body class="auth-page">
-  <div class="logo">
-    <img src="../imgs/logo.png" alt="Logo">
-  </div>
-  <div class="auth-box">
-    <h2>Redefinir Senha</h2>
-    <input type="email" placeholder="Email">
-    <input type="text" placeholder="WordKey">
-    <button onclick="abrirModal()">Redefinir</button>
-    <p><a href="login.html">Voltar</a></p>
-  </div>
-
-  <!-- Modal -->
-  <div id="modalSenha" class="modal">
-    <div class="modal-conteudo">
-      <span class="fechar" onclick="fecharModal()">&times;</span>
-      <h3>Digite sua nova senha</h3>
-      <input type="password" id="novaSenha" placeholder="Nova senha">
-      <input type="password" id="confirmarSenha" placeholder="Confirmar senha">
-      <button onclick="confirmarNovaSenha()">Confirmar</button>
-    </div>
-  </div>
-
-  <script>
-    function abrirModal() {
-      document.getElementById('modalSenha').style.display = 'block';
-    }
-
-    function fecharModal() {
-      document.getElementById('modalSenha').style.display = 'none';
-    }
-
-    function confirmarNovaSenha() {
-      let senha = document.getElementById('novaSenha').value;
-      let confirmar = document.getElementById('confirmarSenha').value;
-
-      if (senha === confirmar && senha !== '') {
-        alert('Senha redefinida com sucesso!');
-        fecharModal();
-      } else {
-        alert('As senhas não coincidem ou estão vazias.');
-      }
-    }
-  </script>
-  <script src="../JS/reset.js"></script>
+<body>
+    <img src="../imgs/Login.jpg" alt="">
+    <header>
+        <div class="logo">
+            <img src="../imgs/logo.png" alt="Desenho de galáxia">
+            <div class="nome">
+                <h1>GALAXY ART</h1>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="card">
+            <h1>Recuperação de Senha</h1>
+            <div class="caixas">
+                <div class="div-input">
+                    <img src="../../src/imgs/img email.png" alt="">
+                    <input type="text" id="email" placeholder="Email">
+                </div>
+                <div class="div-input">
+                    <img src="../imgs/chave.png" alt="">
+                    <input type="text" id="palavraChave" placeholder="Palavra-chave">
+                </div>
+            </div>
+        </div>
+         
+        <button class="abrirModal" id="recuperar">Recuperar</button>
+        <dialog>
+            <div class="modal">
+                <h1>Modificar Senha</h1>
+                
+                <input type="senha" id="senha" placeholder="Senha">
+                
+                <input type="confirmar" id="confirmar" placeholder="Confirmar senha">
+                
+                <!-- <a href="../../index.html"> -->
+                    <button>Modificar</button>
+                <!-- </a> -->
+            </div>
+        </dialog>
+    
+    
+    </main>
 </body>
 </html>

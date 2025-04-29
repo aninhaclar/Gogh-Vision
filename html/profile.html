@@ -1,23 +1,55 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../CSS/profile.css">
-  <title>Perfil</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Gothic+A1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/profile.css">
+    <script src="../JS/profile.js" defer></script>
+    <title>GOGH VISION</title>
 </head>
 <body>
-  <header>
-    <a href="home.html">← Voltar</a>
-    <h1>Meu Perfil</h1>
-  </header>
-  <section class="profile-box">
-    <img src="../imgs/perfilana.jpg" alt="Usuário">
-    <h2>Nome do Usuário</h2>
-    <p>Ana Pires</p>
-    <p>Volêi</p>
-    <p>@SãoPaulo </p>
-  </section>
-  <script src="../JS/profile.js"></script>
+    <header>
+        <div id="barraCima">
+            <div class="divSeguidores">
+                <div class="botaoSeguir">
+                    <button id="seguir">Seguir</button>
+                </div>
+                <div class="numeroSeguir">
+                    <span>00000</span>
+                    <span>00000</span>
+                </div>
+                <div class="textoSeguir">
+                    <p>Seguindo</p>
+                    <p>Seguidores</p>
+                </div>
+            </div>
+            <div class="divBiografia">
+                <span>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx <br>
+                      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx <br>
+                      xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+                </span>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="galeria" id="galeria">
+            <dialog>
+                <div id="divModal"></div>
+            </dialog>
+        </div>
+    </main>
+    <footer>
+        <div class="esquerda">
+            <img src="../imgs/casa.png" alt="menu">
+            <img src="../imgs/lupa.png" alt="pesquisar">
+        </div>
+        <div class="centro">
+            <img src="../imgs/mais.png" alt="novo post">
+        </div>
+        <div class="direita">
+            <img src="../imgs/perfil.png" alt="pessoa">
+        </div>
+    </footer>
 </body>
 </html>

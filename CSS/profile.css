@@ -1,25 +1,181 @@
-body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    background: #e6e9f0;
-  }
-  header {
-    background-color: #0047ab;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .profile-box {
-    text-align: center;
-    margin-top: 50px;
-  }
-  .profile-box img {
-    width: 100px;
-    border-radius: 50%;
-  }
-  .profile-box h2 {
-    margin: 10px 0;
-  }
-  
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background-color: black;
+  background-image: url('../src/imgs/fundo\ galaxia\ 2.png');
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+#barraCima{
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  justify-content: space-between;
+}
+/* Configurações do texto e número de seguidores  */
+.textoSeguir{
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 2vh;
+  padding-right: 30vh;
+  gap: 10vh;
+}
+.textoSeguir p{
+  display: inline;
+  font-family: "Gothic A1", sans-serif;
+  font-size: 3vh;
+  color: white;
+}
+.numeroSeguir{
+  display: flex;
+  justify-content: end;
+  gap: 18vh;
+  padding-right: 33vh;
+}
+.numeroSeguir span{
+  display: inline;
+  font-family: "Gothic A1", sans-serif;
+  font-size: 3vh;
+  color: white;
+}
+/* Configurações do Botão seguir */
+.botaoSeguir{
+  display: flex;
+  justify-content: flex-end;
+  padding: 2vh;
+}
+#seguir{
+  width: 25vh;
+  font-family: "Gothic A1", sans-serif;
+  font-size: 4vh;
+  color: white;
+  background-color: #740098;
+  border-radius: 3vh;
+  border: none;
+  padding: 0.5vh;
+  cursor: pointer;
+}
+/* Configurações da biografia */
+.divBiografia{
+  padding-top: 8vh;
+}
+.divBiografia span{
+  font-family: "Gothic A1", sans-serif;
+  font-size: 3.5vh;
+  color: white;
+}
+/* Configurações da imagem e nome do usuário */
+.divUser{
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  padding-top: 2vh;
+  padding-left: 6vh;
+}
+.divUser img{
+  justify-content: center;
+  border-radius: 100%;
+  width: 25vh;
+  height: 25vh;
+}
+.divUser h3{
+  font-family: "Gothic A1", sans-serif;
+  color: white;
+  font-size: 4vh;
+  text-align: center;
+}
+
+
+/* Main */
+/* Configurações das imagens do post */
+.galeria{
+  display: flex;
+  justify-content: center;
+  gap: 5vh;
+  padding-top: 15vh;
+  flex-wrap: wrap; /* Quebrar linha */
+}
+.galeria img{
+  width: 40vh;
+  height: 40vh;
+}
+
+
+/* Modal */
+/* Configurações do modal */
+dialog{
+  position: relative;
+  top: 8vh;
+  left: 85vh;
+  width: 75vh;
+  height: 80vh;
+  border: none;
+}
+dialog::backdrop{
+  background-color: rgb(0 0 0 / .70);
+}
+#divModal{
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; 
+  padding-top: 2vh;
+}
+dialog span{
+  display: flex;
+  width: 100%;
+  justify-content: end;
+  font-size: 4vh;
+}
+/* Configurações das imagens do Modal */
+#imgPrincipal{
+  width: 65vh;
+  height: 65vh;
+  margin-top: 4vh;
+}
+.icons{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  width: 60vh;
+  height: 10vh;
+  padding-top: 3vh;
+}
+.icons img{
+  height: 30px;
+  width: 40px;
+}
+.closeDetalhe{
+  position: absolute;
+  right: 0;   
+  top: 0;
+  margin: 1vh; 
+  max-width: 5vh;
+  max-height: 5vh;
+  cursor: pointer;
+}
+
+
+
+footer{
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  align-items: center;
+  background-color: #424242;
+  width: 100vw;
+  height: 10vh;
+}
+footer img{
+  width: 8vh;
+}
